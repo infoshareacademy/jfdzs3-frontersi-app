@@ -1,68 +1,32 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+jfdzs3-frontersi :trollface:
+Nazwa zespołu
+Frontersi
 
-## Available Scripts
+Nazwa aplikacji
+Zgubione.app
 
-In the project directory, you can run:
+Struktura folderów
 
-### `npm start`
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Opis aplikacji
+Aplikacja umożliwiająca odnalezienie zagubionych rzeczy i zwierząt.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+Główne funkcje aplikacji
+Możlwość dodania ogłoszenia o zgubie, razem z opisem i zdjęciem + danymi do kontaktu. Dodatkowo możliwość oznaczenia na Google Maps miejsca, gdzie ostatnio widzieliśmy rzecz/zwierzaka, których szukamy. Ogłoszenie można udostępnić na FB, aby poinformować znajomych o naszych poszukiwaniach. Osoby, które widziały gdzieś rzecz, której szukamy mają możliwość oznaczenia lokalizacji na mapie i kontaktu z szukającym. Dodatkowo w aplikacji będzie podział na kategorie poszukiwanych rzeczy.
 
-### `npm test`
+Lista członków grupy  smile
+Sonia
+Tomek
+Krzysiek
+Kacper
+Radek
+Identyfikacja projektu
+Paleta kolorów: https://color.adobe.com/paleta-2-color-theme-11596088/?showPublished=true
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Logo: Pomarańczowy pies trzymający klucze w pyszczku  dog2
 
-### `npm run build`
+DOD:
+Zgodność z szatą graficzną.
+Sprawdzenie kodu przez drugą osobę z zespołum sprawdzenie czy dany element działa na Chromie i Firefoxie i czy strona jest responsywna na telefonach.
+Commitowanie wszystkich zmian z komentarzami.
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
