@@ -1,4 +1,20 @@
 jfdzs3-frontersi :trollface:
+
+
+--------------------------------
+INFORMACJA DLA DEVELOPERÓW:
+
+**STRUKTURA FOLDERÓW:
+
+*PAGES 
+    - FOLDER Z PODSTRONAMI APKI
+*LAYOUT
+    - FOLDER Z KOMPONENTAMI WSPOLNYMI DLA ROZNYCH PODSTRON NP.HEADER, FOOTER
+*COMPONENTS
+  - FOLDER Z KOMPONENTAMI SZCZEGOLOWYMI
+
+------------------------------
+
 Nazwa zespołu
 Frontersi
 
