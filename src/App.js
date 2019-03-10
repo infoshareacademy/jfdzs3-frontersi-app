@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import Header from './Layout/Header/header';
-import SearchBar from './components/SearchBar/searchBar';
+
 import LostList from './components/LostList/lostList';
 import FindList from './components/FindList/findList';
 import Footer from './Layout/Footer/footer';
@@ -14,11 +14,10 @@ class App extends Component {
       <div className="App">
         <p> FRONTERSI </p>
         <Header />
-        
-        <SearchBar />
-        <LostList/>
-        <FindList/>
-        
+        <div className="RenderLists">
+        <LostList className="list"/>
+        <FindList className="list"/>
+        </div>
         <Footer />
         <Link to="/LostForm">Lost Form</Link>
         <Link to="/FindForm">Find Form</Link>
