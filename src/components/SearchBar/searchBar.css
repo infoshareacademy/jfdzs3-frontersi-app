@@ -3,7 +3,10 @@
     padding-top:5rem;
     min-height: 17rem;
    border-bottom: 1px solid black;
-
+   padding-bottom:5rem;
+   background-image: url('../../img/Dashboard/3.jpg');
+ background-repeat: no-repeat;
+ background-size: 1270px 30rem;
 }
 .searchBar{
     margin-top: 3rem;
