@@ -13,6 +13,10 @@
             "sourceMapPathOverrides": {
               "webpack:///src/*": "${webRoot}/*"
             }
+<<<<<<< HEAD
         }
+=======
+          }
+>>>>>>> f5c22c45a54e365c5bc8abb9b3844d6520db76c6
     ]
 }
