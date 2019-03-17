@@ -1,5 +1,70 @@
 .findList{
     display: inline-block;
     width: 50%;
-    
+    min-height: 40rem;
+}
+.lead-find{
+    margin-top: 4rem;
+    width:12rem;
+}
+.list-item-wrapper{
+    background:#D9DBDA;
+    width: 80%;
+    display: flex;
+    justify-content: flex-start;
+    margin: 0 auto;
+    border-radius: 1rem;
+    margin-top: 4rem;
+    min-height: 10rem;
+}
+.list-item-img{
+    width:6rem;
+    height:6rem;
+    margin-left:1rem;
+    margin-top:1rem;
+}
+.favourite-pale{
+    width: 8rem;
+    justify-self:end;
+    margin-left:auto;
+    padding-right: 1rem;
+    margin-top:1rem;
+}
+.list-item-hash-wrapper{
+    display: flex;
+    margin:0 auto;
+    width:100%;
+ 
+}
+.list-item-text-container{
+    display: flex;
+    width:100%;
+    text-align: left;
+    flex-direction: column;
+}
+.more{
+    width: 8rem;
+    justify-self:end;
+    margin-left:auto;
+    margin-right: 1rem;
+    margin-top:-1rem;
+}
+.list-item-name{
+    font-weight: bolder;
+    color: #2B3942;
+    font-size: 2rem;
+    text-transform: uppercase;
+    margin-left: 1rem;
+    margin-top:-1.4rem;
+    letter-spacing: -2px;
+}
+.list-item-hash:first-child{  
+    margin-left:1rem;
+
+}
+.list-item-hash{
+    color: #2B3942;
+    margin-left: 0.3rem;
+    margin-top:-1rem;
+
 }

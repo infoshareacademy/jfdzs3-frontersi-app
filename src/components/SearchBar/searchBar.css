@@ -1,27 +1,46 @@
 .searchBarBox{
     margin: 0 auto;
+    margin-top:6rem;
     padding-top:5rem;
-    min-height: 17rem;
-   border-bottom: 1px solid black;
+    min-height: 30rem;
    padding-bottom:5rem;
-   background-image: url('../../img/Dashboard/3.jpg');
+   background-image: url('../../img/Home/alt_home.JPG');
  background-repeat: no-repeat;
  background-size: 1270px 30rem;
+ 
+}
+.input-wrapper{
+    display: flex;
+    flex-direction: row;
+    vertical-align: middle;
 }
 .searchBar{
-    margin-top: 3rem;
+
     width: 70rem;
     border-radius: .3rem;
+
 }
 .searchBarInput {
-    width: 50rem !important;
-    min-height: 4rem;
-    margin: 0.5rem 0 0.5rem 6rem;
+    width: 35rem !important;
+    min-height: 3rem;
+    margin: 0 0.5rem;
+    
+}
+.select-wrapper{
+
+display: flex;
+width:28rem;
+min-height: 4rem;
+justify-content: flex-end;
+margin: 0 2rem;
+vertical-align: middle;
+
 }
 .searchBtn{
-    min-height: 4rem;
-    min-width: 4rem;
-    margin-left:2rem;
+   height: 3rem;
+   width: 3rem;
+    
+  
 
 }
 .SearchBarFilterText{
@@ -29,17 +48,28 @@
     font-family:Arial, Helvetica, sans-serif;
     text-transform: uppercase;
     font-weight: 100;
-    color: #272727;
     font-size: 1.4rem;
     padding: 1rem;
+    color:#fff;
 }
 
-.selectWrapper{
 
-display: block;
-margin-left: 17rem;
-padding-bottom:1rem;
+.select-wrapper select{
+    
+    vertical-align: middle;
+    width:200px;
+    height: 3rem;
+    margin: 0 1rem;
+    opacity:.8;
+
+
 }
-.selectWrapper select {
-    margin:0 2rem;
+.searchBar-orange-wrapper{
+    background: orange;
+    margin: 0 auto;
+    margin-top:18rem;
+    height: 4rem;
+    width:68rem;
+    border-radius:.8rem;
+    opacity: .98;
 }

@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import Logo from '../../img/logo.png';
-
+import find from '../../img/Header/2.png';
+import lost from '../../img/Header/3.png';
+import favourite from '../../img/Header/star_favourite.png';
+import './navbar.css';
 const logotype = {
   width: '20rem',
   paddingLeft:'5rem',
@@ -12,13 +15,13 @@ class Navbar extends Component {
   render() {
     return (
   
-        <div className="d-flex fixed-top flex-column flex-wrap flex-md-row align-items-center p-1 px-md-3 mb-7 bg-white border-0">
+        <div className="container d-flex fixed-top flex-column flex-wrap flex-lg-row align-items-center bg-white">
         <a href="#" className="my-1 mr-md-auto"><img style={logotype} src={Logo} class="header-logo" alt="logo"/></a>
         <nav className="my-2 my-md-0 mr-md-3">
-        <a className=" p-2 text-dark main-nav-size">Zgłoś zagubienie</a>
-        <a className="p-2 text-dark main-nav-size">Zgłoś znalezienie</a>
+        <a className=" p-2 text-dark main-nav-size"><img className="img-width" src={find} ></img></a>
+        <a className="p-2 text-dark main-nav-size"><img className="img-width" src={lost} ></img></a>
         </nav>
-        <a className="btn orange-btn main-nav-size">Moje ulubione</a>
+        <a className="btn orange-btn main-nav-size"><img className="img-width" src={favourite} ></img></a>
         </div>
 
 
