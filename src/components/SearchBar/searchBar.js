@@ -13,7 +13,7 @@ class SearchBar extends Component {
                             <input
                                 className="searchBarInput form-control"
                                 type="search"
-                                placeholder="Szukaj zguby"
+                                placeholder="Czego szukasz"
                                 aria-label="Search"/>
                             <div className="select-wrapper">
                                 <select>

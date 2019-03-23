@@ -9,8 +9,8 @@ class Footer extends Component {
       <div className="footer-container">
         <img  className="footer-img" src={img1}></img>
         <Link className="footer-link" to="/">Strona Główna |</Link>
+        <Link className="footer-link" to="/LostForm">Zgłoś zagubienie |</Link>
         <Link className="footer-link" to="/FindForm">Zgłoś znalezienie |</Link>
-        <Link className="footer-link" to="/LostForm">Zgłoś zaginięcie |</Link>
         <Link className="footer-link" to="/Favourite">Moje ulubione |</Link>
         <Link className="footer-link" to="/Dashboard">Dashboard </Link>
 
