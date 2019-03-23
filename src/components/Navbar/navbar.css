@@ -2,5 +2,20 @@
     max-width: 1270px;
 }
 .img-width{
-width: 8rem;
+width: 10rem;
+}
+.img-fav-width{
+    width: 8rem;
+    }
+.nav-wrapper{
+    display: flex;
+}
+.nav-item{
+    padding:20px;
+}
+.nav-item-third{
+    width:22px;
+}
+.nav-item-third img {
+    width: 14rem;
 }
