@@ -20,7 +20,9 @@ class ListItem extends Component {
                             <p className="list-item-hash">#sloneczne</p>
                             <p className="list-item-hash">#ipad</p>
                         </div>
-                        <img className="more" src={more}></img>
+                        <Link className="more" to="/FindDetail"><img className="more" src={more}></img></Link>
+
+                       
                     </div>
 </div>
 

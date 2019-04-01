@@ -11,6 +11,7 @@ import phone from "../../img/Home/2.jpg";
 import dog from "../../img/Home/3.jpg";
 import tablet from "../../img/Home/4.jpg";
 import cat from "../../img/Home/5.jpg";
+import {Link} from 'react-router-dom';
 
 class LostList extends Component {
     render() {
@@ -26,7 +27,8 @@ class LostList extends Component {
                             <p className="list-item-hash">#niebuszewo</p>
                             <p className="list-item-hash">#kot</p>
                         </div>
-                        <img className="more" src={more}></img>
+                        <Link className="more" to="/LostDetail"><img className="more" src={more}></img></Link>
+
                     </div>
 
                 </div>
@@ -39,7 +41,7 @@ class LostList extends Component {
                         <p className="list-item-hash">#centrum</p>
                         <p className="list-item-hash">#telefony</p>
                     </div>
-                    <img className="more" src={more}></img>
+                    <Link className="more" to="/LostDetail"><img className="more" src={more}></img></Link>
                 </div>
 
             </div>
