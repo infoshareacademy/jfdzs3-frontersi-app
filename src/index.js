@@ -1,4 +1,4 @@
-import {BrowserRouter, Route} from 'react-router-dom';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
@@ -11,9 +11,11 @@ import LostDetail from'./Pages/LostDetail/lostDetail';
 import FindDetail from'./Pages/FindDetail/findDetail';
 import Dashboard from './Pages/Dashboard//dashboard';
 import Favourite from './Pages/Favourite/favourite';
+import Layout from './Layout/layout';
 ReactDOM.render(
     <BrowserRouter>
-    <div>
+    <Layout>
+        <Switch>
         <Route exact path='/' component={App} />
         <Route path='/LostForm' component={LostForm} />
         <Route path='/FindForm' component={FindForm} />
@@ -21,7 +23,8 @@ ReactDOM.render(
         <Route path='/FindDetail' component={FindDetail} />
         <Route path='/Dashboard' component={Dashboard} />
         <Route path='/Favourite' component={Favourite} />
-    </div>
+        </Switch>
+    </Layout>
 </BrowserRouter>
     , document.getElementById('root'));
 

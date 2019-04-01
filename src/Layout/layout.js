@@ -6,13 +6,14 @@ import Footer from './Footer/footer';
 class Layout extends Component {
   render() {
     return (
-      <div className="App">
-        <Header />
-        <p> Layout </p>
+      <div>
+        <Header  />
+        {this.props.children}
+        
         <Footer />
       </div>
     );
   }
 }
 
-export default Layout;s
+export default Layout;
