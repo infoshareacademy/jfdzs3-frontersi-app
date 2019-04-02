@@ -1,0 +1,26 @@
+.title{
+    width:10rem;
+    margin: 20px;
+    }
+
+.lost_detail_container{ 
+    text-align: justify;
+    margin: 0 auto;
+    width: 50%;
+    margin-bottom: 50px;
+    padding: 20px;
+    background-color: #D9DBDA;
+    border-radius: 10px; 
+    
+    
+}
+.lost-item-img{
+    border: inset;
+    border-radius: 10px;
+    height: 200px;
+    width: 200px;
+    border-width: 1px;
+    margin: 20px;
+    float: left;
+
+}
