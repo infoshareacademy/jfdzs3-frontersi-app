@@ -12,43 +12,19 @@ import dog from "../../img/Home/3.jpg";
 import tablet from "../../img/Home/4.jpg";
 import cat from "../../img/Home/5.jpg";
 import {Link} from 'react-router-dom';
+import ListItem from '../ListItem/listItem';
 
 class LostList extends Component {
     render() {
         return (
             <div className="findList">
-                <img className="lead-lost" src={zgubione}></img>
-                <div className="list-item-wrapper">
-                    <img className="list-item-img" src={cat}></img>
-                    <div className="list-item-text-container">
-                        <img className="favourite-pale" src={favouritePale}></img>
-                        <p className="list-item-name">Kot</p>
-                        <div className="list-item-hash-wrapper">
-                            <p className="list-item-hash">#niebuszewo</p>
-                            <p className="list-item-hash">#kot</p>
-                        </div>
-                        <Link className="more" to="/LostDetail"><img className="more" src={more}></img></Link>
-
-                    </div>
-
-                </div>
-                <div className="list-item-wrapper">
-                <img className="list-item-img" src={phone}></img>
-                <div className="list-item-text-container">
-                    <img className="favourite-pale" src={favouritePale}></img>
-                    <p className="list-item-name">Galaxy s9+</p>
-                    <div className="list-item-hash-wrapper">
-                        <p className="list-item-hash">#centrum</p>
-                        <p className="list-item-hash">#telefony</p>
-                    </div>
-                    <Link className="more" to="/LostDetail"><img className="more" src={more}></img></Link>
-                </div>
-
-            </div>
-
+              <img className="lead-find" src={zgubione}></img>
+                <ListItem link="/LostDetail"itemImg={cat} itemName="Kot" hasz1="kot" hasz2="pomorzany"/>
+                <ListItem link="/LostDetail" itemImg={phone} itemName="Iphone X" hasz1="telefon" hasz2="kijewo"/>
             </div>
         );
     }
 }
+
 
 export default LostList;

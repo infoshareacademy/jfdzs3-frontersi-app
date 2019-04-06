@@ -17,8 +17,8 @@ class FindList extends Component {
         return (
             <div className="findList">
               <img className="lead-find" src={znalezione}></img>
-                <ListItem itemImg={dog}/>
-                <ListItem itemImg={phone}/>
+                <ListItem link="/FindDetail" itemImg={dog} itemName="Pies" hasz1="pies" hasz2="sloneczne"/>
+                <ListItem link="/FindDetail" itemImg={phone} itemName="GALAXY S9" hasz1="telefon" hasz2="podjuchy"/>
             </div>
         );
     }
