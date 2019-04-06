@@ -1,0 +1,16 @@
+.form{
+    display: flex;
+    justify-content: space-around;
+    margin-left: 150px;
+    flex-direction: column;
+}
+.name{
+    margin-left: 15px;
+    padding-left: 50px;
+}
+input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+  }
