@@ -6,8 +6,8 @@
 .lost_detail_container{ 
     text-align: justify;
     margin: 0 auto;
-    width: 50%;
-    min-height: 300px;
+    width: 70%;
+    min-height: 500px;
     margin-bottom: 50px;
     padding: 20px;
     background-color: #D9DBDA;
@@ -23,8 +23,8 @@
 .lost-item-img{
     border: inset;
     border-radius: 3px;
-    height: 200px;
-    width: 200px;
+    height: 400px;
+    width: 400px;
     border-width: 1px;
     margin: 20px;
     float: left;
