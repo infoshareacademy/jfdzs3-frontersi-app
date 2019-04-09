@@ -43,6 +43,7 @@ class FindForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      id: `${Date.now()}`,
       yourName: '',
       email: '',
       phoneNumber: '',
@@ -50,6 +51,7 @@ class FindForm extends Component {
       category: '',
       description: ''
     };
+   
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -63,6 +65,25 @@ class FindForm extends Component {
     alert('Ogłoszenie zostało dodane!');
     event.preventDefault();
     console.log(this.state)
+
+    const foundItemDetails = {
+      id: this.state.id,
+      yourName : this.state.yourName,
+      email: this.state.email,
+      phoneNumber: this.state.phoneNumber,
+      location: this.state.location,
+      category: this.state.category,
+      description: this.state.description
+    }
+    
+    fetch(
+      `https://zgubionepl.firebaseio.com/foundItem-${this.state.id}
+      .json`,
+      {
+        method: "PUT",
+        body: JSON.stringify(foundItemDetails)
+      }
+    );
   }
 
   render() {
