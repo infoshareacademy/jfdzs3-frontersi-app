@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './findForm.css';
 import formularz from '../../img/FindForm/2.png';
 import zguba from '../../img/FindForm/4.PNG';
+import { db } from '../../firebase';
 
 const nameStyle = {
   marginRight: '20px',
@@ -43,6 +44,7 @@ class FindForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      db: {},
       id: `${Date.now()}`,
       yourName: '',
       email: '',
@@ -75,15 +77,11 @@ class FindForm extends Component {
       category: this.state.category,
       description: this.state.description
     }
-    
-    fetch(
-      `https://zgubionepl.firebaseio.com/foundItem-${this.state.id}
-      .json`,
-      {
-        method: "PUT",
-        body: JSON.stringify(foundItemDetails)
-      }
-    );
+  
+            db.ref('/foundItem').push(foundItemDetails, function(error){
+                console.log(error)
+                console.log('new item added');
+            });
   }
 
   render() {

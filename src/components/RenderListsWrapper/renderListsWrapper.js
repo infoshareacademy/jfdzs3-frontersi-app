@@ -19,6 +19,15 @@ class RenderListsWrapper extends Component {
     console.log( this.state.searchCategory);
    
 };
+
+componentDidMount(){ 
+  fetch("https://zgubionepl.firebaseio.com/foundItem/1554893074432.json")
+  .then(response => response.json())
+  .then(result => {
+   console.log(result);
+    });
+ 
+}
   render() {
     return (
       <div>

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './lostForm.css';
 import formularz from '../../img/LastForm/2.png';
 import zguba from '../../img/LastForm/4.PNG';
+import { db } from '../../firebase';
 
 const nameStyle = {
   marginRight: '20px',
@@ -73,15 +74,10 @@ class FindForm extends Component {
       category: this.state.category,
       description: this.state.description
     }
-    
-    fetch(
-      `https://zgubionepl.firebaseio.com/lostItem-${this.state.id}
-      .json`,
-      {
-        method: "PUT",
-        body: JSON.stringify(lostItemDetails)
-      }
-    );
+    db.ref('/lostItem').push(lostItemDetails, function(error){
+      console.log(error)
+      console.log('new item added');
+  });
   }
 
   render() {

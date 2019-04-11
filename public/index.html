@@ -40,6 +40,35 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
+    <script>
+      const config = {
+      apiKey: "AIzaSyDe-MaR4Zt-GzKxEBCwsbjpftLjt1aDe8s",
+      authDomain: "zgubionepl.firebaseapp.com",
+      databaseURL: "https://zgubionepl.firebaseio.com",
+      projectId: "todolist-93d86",
+      storageBucket: "zgubionepl.appspot.com",
+      messagingSenderId: "182550302672"
+    };
+    this.app = firebase.initializeApp(config);
+
+    const zgubioneRef = firebase.database().ref("founded");
+    zgubioneRef.on("value", snapshot => {
+      this.setState({
+        db: snapshot.val() || {}
+      });
+      console.log(snapshot.val());
+    });
+    const todosFavRef = firebase.database().ref("todosFavorites");
+    todosFavRef.on("value", snapshot => {
+      this.setState({
+        db: snapshot.val() || {}
+      });
+      console.log(snapshot.val());
+    });
+  }
+    </script>
+    
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
