@@ -53,7 +53,7 @@ class FindForm extends Component {
       category: '',
       description: ''
     };
-   
+
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -70,18 +70,18 @@ class FindForm extends Component {
 
     const foundItemDetails = {
       id: this.state.id,
-      yourName : this.state.yourName,
+      yourName: this.state.yourName,
       email: this.state.email,
       phoneNumber: this.state.phoneNumber,
       location: this.state.location,
       category: this.state.category,
       description: this.state.description
     }
-  
-            db.ref('/foundItem').push(foundItemDetails, function(error){
-                console.log(error)
-                console.log('new item added');
-            });
+
+    db.ref('/foundItem').push(foundItemDetails, function (error) {
+      console.log(error)
+      console.log('new item added');
+    });
   }
 
   render() {
@@ -97,11 +97,11 @@ class FindForm extends Component {
           </label>
           <label style={emailStyle}>
             email:
-        <input type="text" name="email" value={this.state.email} onChange={this.handleChange} style={inputStyle} />
+        <input type="email" name="email" value={this.state.email} onChange={this.handleChange} style={inputStyle} />
           </label>
           <label style={emailStyle}>
             Numer kontaktowy:<br />
-            <input type="number" name="phoneNumber" value={this.state.phoneNumber} onChange={this.handleChange} style={inputStyle} />
+            <input type="tel" name="phoneNumber" pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}" value={this.state.phoneNumber} onChange={this.handleChange} style={inputStyle} />
           </label><br />
           <label style={locationStyle}>
             Miejsce znalezienia przedmiotu:<br />
