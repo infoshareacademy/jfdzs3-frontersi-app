@@ -93,11 +93,11 @@ class FindForm extends Component {
           </label>
           <label style={emailStyle}>
             email:
-        <input type="text" name="email" value={this.state.email} onChange={this.handleChange} style={inputStyle} />
+        <input type="email" name="email" value={this.state.email} onChange={this.handleChange} style={inputStyle} />
           </label>
           <label style={emailStyle}>
             Numer kontaktowy:<br />
-            <input type="number" name="phoneNumber" value={this.state.phoneNumber} onChange={this.handleChange} style={inputStyle} />
+            <input type="tel" name="phoneNumber" pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}" value={this.state.phoneNumber} onChange={this.handleChange} style={inputStyle} />
           </label><br />
           <label style={locationStyle}>
             Miejsce zgubienia przedmiotu:<br />
