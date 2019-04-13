@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import SearchBar from '../SearchBar/searchBar';
 import FindList from '../FindList/findList';
 import LostList from '../LostList/lostList';
-import FindForm from '../../Pages/FindForm/findForm';
+
 
 class RenderListsWrapper extends Component {
   state = {
@@ -21,12 +21,17 @@ class RenderListsWrapper extends Component {
 };
 
 componentDidMount(){ 
-  fetch("https://zgubionepl.firebaseio.com/foundItem/1554893074432.json")
+  fetch("https://zgubionepl.firebaseio.com/foundItem.json")
   .then(response => response.json())
   .then(result => {
    console.log(result);
     });
- 
+
+    fetch("https://zgubionepl.firebaseio.com/lostItem.json")
+    .then(response => response.json())
+    .then(result => {
+     console.log(result);
+      });
 }
   render() {
     return (
