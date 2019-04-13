@@ -1,0 +1,53 @@
+.dashboradWrapper{
+    box-sizing: border-box;
+}
+
+.dashboradSectionMainCounter{
+    background-image: url(../../img/Dashboard/3.jpg);
+    background-size: cover;
+    height: 700px;
+    padding: 80px 650px 80px 200px
+}
+
+.dashboradImg_1{
+    height: 150px;
+}
+
+.dashboradMainCounter{
+    font-size: 170px;
+    color: white;
+    font-weight: bolder;
+}
+
+.dashboradImg_2{
+    height: 100px;
+}
+
+.dashboradTitleText{
+    font-size: 80px;
+    color: gray;
+    font-weight: bolder;
+    margin: 50px 0px 0px 0px;
+}
+
+.counterText{
+    font-size: 120px;
+    color: orange;
+    font-weight: bolder;
+}
+
+.dashboradText{
+    font-size: 40px;
+    color: grey;
+    font-weight: bolder;
+}
+
+.dashboardElementContener{
+    display: inline-block;
+}
+
+.dashboardElement{
+    width: 635px;
+    float: left;
+    margin: 40px 0px;
+}
