@@ -6,37 +6,32 @@ import LostList from '../LostList/lostList';
 
 class RenderListsWrapper extends Component {
   state = {
-    searchTerm: '',
-    searchCategory: '',
-    searchArea: ''
+    foundItems: {},
+    lostItems: {}
     }
-  onSearchSubmit = (term, category, area) => {
-    this.setState({
-      searchTerm: term,
-      searchCategory: category,
-      searchArea: area
-    })
-    console.log( this.state.searchCategory);
-   
-};
+  
 
 componentDidMount(){ 
   fetch("https://zgubionepl.firebaseio.com/foundItem.json")
   .then(response => response.json())
   .then(result => {
    console.log(result);
+   this.setState({ foundItems: result})
     });
 
     fetch("https://zgubionepl.firebaseio.com/lostItem.json")
     .then(response => response.json())
     .then(result => {
      console.log(result);
+     this.setState({ lostItems: result})
       });
 }
   render() {
+
+    
     return (
       <div>
-      <SearchBar onSub={this.onSearchSubmit}/>
+      <SearchBar/>
       <div className="RenderLists">
       <FindList/>
       <LostList/>
