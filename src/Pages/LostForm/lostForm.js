@@ -6,7 +6,8 @@ import {storage, db } from '../../firebase';
 
 
 const form= {
-  margin: '0 auto'
+  margin: '0 auto',
+  
 }
 const secondFormLine ={
   display:'block',
@@ -21,7 +22,7 @@ verticalAlign: 'middle'
 const descriptionInput ={
   height:'10rem',
   padding:'2rem',
-  margin: '.5rem auto',
+  background:'transparent',
   verticalAlign: 'middle'
 
 }
@@ -49,6 +50,7 @@ const uploader = {
 }
 const formWrapper = {
   margin: '0 auto',
+  background: '#F9F9F9'
 }
 const pictureWrapper = {
   display:'flex',
@@ -65,6 +67,7 @@ const imgStyle = {
   maxHeight: "400px",
   maxWidth: "400px"
 }
+
 
 
 class lostForm extends Component {
@@ -216,7 +219,7 @@ handleUpload = (e) => {
               <option>Inne</option>
             </select>
             <br /> <br />
-          <label style={label}>
+         <label style={label}>
             Krótki opis zguby:
             </label>
             <textarea required type="text" name="description" value={this.state.description} onChange={this.handleChange} rows="5" cols="50" style={descriptionInput} />

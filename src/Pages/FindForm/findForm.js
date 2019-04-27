@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './findForm.css';
 import formularz from '../../img/LastForm/2.png';
-import zguba from '../../img/LastForm/4.PNG';
+import zguba from '../../img/FindForm/4.PNG';
 import {storage, db } from '../../firebase';
 
 
@@ -21,6 +21,7 @@ verticalAlign: 'middle'
 const descriptionInput ={
   height:'10rem',
   padding:'2rem',
+  background:'transparent',
   margin: '.5rem auto',
   verticalAlign: 'middle'
 
@@ -49,6 +50,7 @@ const uploader = {
 }
 const formWrapper = {
   margin: '0 auto',
+  background: '#F9F9F9'
 }
 const pictureWrapper = {
   display:'flex',
