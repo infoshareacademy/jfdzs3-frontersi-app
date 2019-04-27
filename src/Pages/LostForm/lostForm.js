@@ -215,7 +215,7 @@ handleUpload = (e) => {
               <option>Portfel</option>
               <option>Dokumenty</option>
               <option>Klucze</option>
-              <option>Zwierzę</option>
+              <option>Zwierze</option>
               <option>Inne</option>
             </select>
             <br /> <br />

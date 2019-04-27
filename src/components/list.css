@@ -22,7 +22,7 @@
     border-radius: 1rem;
     border:1px groove #D9DBDA;
     margin-top: 4rem;
-
+    height:12rem;
     -webkit-box-align: 4px 4px 5px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.75);
     box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.75);
@@ -48,8 +48,11 @@
 .list-item-hash-wrapper{
     display: flex;
     margin:0 auto;
-    width:80%;
- 
+    width:300px;
+    height: 40px;
+    margin-bottom:1rem;
+   
+  
 }
 .list-item-text-container{
     display: flex;
@@ -61,8 +64,8 @@
 .more{
     display: inline-block;
     width: 8rem;
-    height: 2.2rem;
- 
+    height: 2.1rem;
+    margin-right: 1.5rem;
   align-self: flex-end;
   margin-bottom: 2rem;
 
@@ -77,20 +80,25 @@
     margin-top:-1.4rem;
     letter-spacing: -2px;
 }
-.list-item-hash:first-child{  
-    margin-left:-5rem!important;
-    padding-top:2rem!important;
-    font-size: 1.1rem;
-    letter-spacing: .05rem;
-    font-style: italic;
-    
-}
+
 .list-item-hash{
     color: #2B3942;
     letter-spacing: .05rem;
-    padding-left:.3rem;
-    padding-top:2rem!important;
-    font-size: 1.1rem;
+    background: rgba(161, 161, 161, 0.26);
     font-style: italic;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-family: monospace;
+    margin-top:-.5rem;
+    padding: 6px 2px;
+    
 
+}
+.list-item-hash:first-child{  
+    margin-left:-5rem!important;
+    padding-right:8px;
+    /* padding-top:2rem!important; */
+  
+ 
+    
 }
