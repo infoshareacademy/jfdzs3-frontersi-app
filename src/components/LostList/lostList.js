@@ -15,16 +15,34 @@ import {Link} from 'react-router-dom';
 import ListItem from '../ListItem/listItem';
 
 class LostList extends Component {
+  
     render() {
+        const item = Object.keys(this.props.list);
         return (
             <div className="findList">
-              <img className="lead-find" src={zgubione}></img>
-                <ListItem link="/LostDetail"itemImg={cat} itemName="Kot" hasz1="kot" hasz2="pomorzany"/>
-                <ListItem link="/LostDetail" itemImg={phone} itemName="Iphone X" hasz1="telefon" hasz2="kijewo"/>
-            </div>
-        );
-    }
-}
+                <img className="lead-find" src={zgubione}></img>
+                {item.map(key => {
+                    const i = this.props.list[key];
+                    console.log(i.category)
+                    console.log(this.props.list)
+                    return(
+                <div>
+                <ListItem
+                    link="/LostDetail"
+                    itemImg={i.url}
+                    itemName={i.itemName}
+                    hasz1={i.location}
+                    hasz2={i.category}/>
+                </div>
+        
+    )
+})}
+</div>
+ 
 
+   
+    )
+};
+}
 
 export default LostList;

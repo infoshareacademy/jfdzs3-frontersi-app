@@ -2,106 +2,167 @@ import React, { Component } from 'react';
 import './lostForm.css';
 import formularz from '../../img/LastForm/2.png';
 import zguba from '../../img/LastForm/4.PNG';
-import { db } from '../../firebase';
+import {storage, db } from '../../firebase';
 
-const nameStyle = {
-  marginRight: '20px',
-  marginLeft: '200px',
+
+const form= {
+  margin: '0 auto'
 }
-const emailStyle = {
-  marginRight: '20px',
-  marginLeft: '100px'
+const secondFormLine ={
+  display:'block',
+  margin: 'auto',
+  padding:'5rem',
 }
-const locationStyle = {
-  marginLeft: '350px',
-  marginTop: '50px'
+const label = {
+padding:'1rem',
+fontFamily: 'monospace',
+verticalAlign: 'middle'
 }
-const categoryStyle = {
-  marginLeft: '350px'
-}
-const descriptionStyle = {
-  marginLeft: '30%',
-  marginTop: '50px'
+const descriptionInput ={
+  height:'10rem',
+  padding:'2rem',
+  margin: '.5rem auto',
+  verticalAlign: 'middle'
+
 }
 const lostStyle = {
-  width: '1200px',
-  marginLeft: '200px'
+  margin: '0 auto'
 }
 const formStyle = {
-  width: '1200px',
-  marginLeft: '200px',
-  marginBottom: '100px'
+  margin: '40px auto',
+  width: '20%',
 }
 const inputStyle = {
-  borderRadius: '10px',
-  boxShadow: '0 0 0 3px #000',
+  borderRadius: '1px',
+  height: '40px',
+  margin: '0 auto',
+  width:'200px',
+  boxShadow: '0 0 0 1px #000',
   border: '5px solid transparent'
+}
+const uploader = {
+  webkitAppearance: 'none',
+  apperance: 'none',
+  width: '30%',
+  marginBottom: '10px',
+  color: 'white'
+}
+const formWrapper = {
+  margin: '0 auto',
+}
+const pictureWrapper = {
+  display:'flex',
+  flexDirection:'column',
+  justifyContent:'center',
+  alignItems:'center',
+
+}
+const previewStyle = {
+  maxHeight: "400px",
+  maxWidth: "300px"
+}
+const imgStyle = {
+  maxHeight: "400px",
+  maxWidth: "400px"
 }
 
 
-
-class FindForm extends Component {
+class lostForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: `${Date.now()}`,
-      yourName: '',
+      images:[],
+      progress: 0,
+      image: null,
+      url: '',
+      itemName: '',
       email: '',
       phoneNumber: '',
       location: '',
       category: '',
-      description: ''
+      description: '',
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleFileInputChange = this.handleFileInputChange.bind(this);
+    this.handleUpload = this.handleUpload.bind(this);
   }
-
   handleChange = (event) => {
     this.setState({ [event.target.name]: event.target.value })
   }
+  handleFileInputChange  = (e)=> {
+    if(e.target.files[0]) {
+      const image = e.target.files[0] ;
+      this.setState(() => ({image}));
+  }
+}
+handleUpload = (e) => {
+  e.preventDefault();
+  const {image} =this.state;
+  const uploadTask = storage.ref(`lostImages/${image.name}`).put(image);
+  uploadTask.on('state_changed', (snapshot)=>{
+     //progress
+     const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes)*100);
+     this.setState({progress});
+  }, (error) =>{
+    //error
+    console.log(error)
+  },
+   (complete) => {
+     //complete
+     storage.ref('lostImages').child(image.name).getDownloadURL().then(url => {
+      console.log(url);
+      this.setState({url});
+     })
+   });
+}
 
   handleSubmit(event) {
     alert('Ogłoszenie zostało dodane!');
     event.preventDefault();
     console.log(this.state)
     const lostItemDetails = {
-      id: this.state.id,
-      yourName : this.state.yourName,
+      itemName : this.state.itemName,
       email: this.state.email,
       phoneNumber: this.state.phoneNumber,
       location: this.state.location,
       category: this.state.category,
-      description: this.state.description
+      description: this.state.description,
+      url: this.state.url
     }
     db.ref('/lostItem').push(lostItemDetails, function(error){
       console.log(error)
       console.log('new item added');
   });
   }
-
   render() {
+ 
     return (
 
-      <div className="form">
+      <div className="form" style={form}>
         <img className="zguba" src={zguba} style={lostStyle} />
         <img className="formularz" src={formularz} style={formStyle} />
-        <form onSubmit={this.handleSubmit}>
-          <label style={nameStyle}>
-            Imie i nazwisko:
-        <input type="text" name="yourName" value={this.state.yourName} onChange={this.handleChange} className="name" style={inputStyle} />
+        <form onSubmit={this.handleSubmit} style={formWrapper}>
+          <label style={label}>
+          Co zgubiłeś?
           </label>
-          <label style={emailStyle}>
-            email:
-        <input type="email" name="email" value={this.state.email} onChange={this.handleChange} style={inputStyle} />
-          </label>
-          <label style={emailStyle}>
-            Numer kontaktowy:<br />
-            <input type="tel" name="phoneNumber" pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}" value={this.state.phoneNumber} onChange={this.handleChange} style={inputStyle} />
-          </label><br />
-          <label style={locationStyle}>
-            Miejsce zgubienia przedmiotu:<br />
-            <select name="location" value={this.state.location} onChange={this.handleChange} style={inputStyle}>
+                  <input required type="text" name="itemName" value={this.state.itemName} onChange={this.handleChange} className="name" style={inputStyle} />
+         
+          <label style={label}>
+            Twój email:  
+            </label>
+        <input required type="email" name="email" value={this.state.email} onChange={this.handleChange} style={inputStyle} />
+      
+          <label style={label}>
+            Numer kontaktowy:
+            </label>
+            <input required type="tel" name="phoneNumber" pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}" value={this.state.phoneNumber} onChange={this.handleChange} style={inputStyle} /><br />
+        
+          <div style={secondFormLine}>
+          <label style={label}>
+            Gdzie zgubiłeś:</label>
+            <select required name="location" value={this.state.location} onChange={this.handleChange} style={inputStyle}>
               <option selected>Dzielnica</option>
               <option>Arkońskie-Niemierzyn</option>
               <option>Głębokie-Pilchowo</option>
@@ -141,10 +202,10 @@ class FindForm extends Component {
               <option>Warszewo</option>
               <option>Żelechowa</option>
             </select>
-          </label>
-          <label style={categoryStyle}>
-            Rodzaj przedmiotu:<br />
-            <select name="category" value={this.state.category} onChange={this.handleChange} style={inputStyle}>
+         
+          <label style={label}>
+            Rodzaj przedmiotu:</label>
+            <select required name="category" value={this.state.category} onChange={this.handleChange} style={inputStyle}>
               <option selected>Kategoria</option>
               <option>Telefon</option>
               <option>Bizuteria</option>
@@ -154,12 +215,21 @@ class FindForm extends Component {
               <option>Zwierzę</option>
               <option>Inne</option>
             </select>
-          </label><br />
-          <label style={descriptionStyle}>
-            Krótki opis przedmiotu:<br />
-            <textarea type="text" name="description" value={this.state.description} onChange={this.handleChange} rows="10" cols="60" style={inputStyle} />
-          </label>
-          <input type="submit" value="Dodaj zgłoszenie" style={nameStyle} />
+            <br /> <br />
+          <label style={label}>
+            Krótki opis zguby:
+            </label>
+            <textarea required type="text" name="description" value={this.state.description} onChange={this.handleChange} rows="5" cols="50" style={descriptionInput} />
+            </div>  
+          <div style={pictureWrapper}>
+          <img src={this.state.url || 'https://via.placeholder.com/400x300'} alt="Uploaded images" style={previewStyle}/><br />
+          <input required type="file" onChange={this.handleFileInputChange}/><br /><br />
+
+          <progress value={this.state.progress} max="100" style={uploader}></progress><br />
+          <button onClick={(this.state.image === null)||this.handleUpload}>Dodaj zdjęcie</button><br />
+          <input type="submit" value="Dodaj zgłoszenie" style={label} />
+        </div>
+          
         </form>
       </div>
 
@@ -169,4 +239,4 @@ class FindForm extends Component {
 
 }
 
-export default FindForm;
+export default lostForm;
