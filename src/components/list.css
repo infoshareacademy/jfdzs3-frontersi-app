@@ -1,8 +1,8 @@
 .list{
     display: inline-block;
     width: 50%;
-    min-height: 40rem;
-    height: 1600px;
+    min-height: 30rem;
+    height: 1100px;
     vertical-align: middle;
     margin-bottom: 4rem;
 }
@@ -21,8 +21,8 @@
     margin: 0 auto;
     border-radius: 1rem;
     border:1px groove #D9DBDA;
-    margin-top: 4rem;
-    height:12rem;
+    margin-top: 3rem;
+    height:10rem;
     -webkit-box-align: 4px 4px 5px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.75);
     box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.75);
@@ -48,7 +48,7 @@
 .list-item-hash-wrapper{
     display: flex;
     margin:0 auto;
-    width:300px;
+    width:600px;
     height: 40px;
     margin-bottom:1rem;
    
@@ -56,8 +56,7 @@
 }
 .list-item-text-container{
     display: flex;
-    width:90%;
-    height:220px;
+    width:80%;
     text-align: left;
     flex-direction: column;
 }
@@ -66,12 +65,12 @@
     width: 8rem;
     height: 2.1rem;
     margin-right: 1.5rem;
-  align-self: flex-end;
-  margin-bottom: 2rem;
+    margin-top:-2rem;
+    align-self: flex-end;
 
 }
 .list-item-name{
-    font-weight: 900;
+    font-weight: 300;
     width:70%;
     color: #2B3942;
     font-size: 1.8rem;
@@ -84,19 +83,22 @@
 .list-item-hash{
     color: #2B3942;
     letter-spacing: .05rem;
-    background: rgba(161, 161, 161, 0.26);
+   background: rgba(211,211,211, 0.6);
     font-style: italic;
     font-weight: 900;
+    min-width: 5%;
+    max-width:50%;
+    vertical-align: middle;
     text-transform: uppercase;
     font-family: monospace;
     margin-top:-.5rem;
-    padding: 6px 2px;
+  
     
 
 }
 .list-item-hash:first-child{  
-    margin-left:-5rem!important;
-    padding-right:8px;
+    margin-left:-2.5rem!important;
+   
     /* padding-top:2rem!important; */
   
  
