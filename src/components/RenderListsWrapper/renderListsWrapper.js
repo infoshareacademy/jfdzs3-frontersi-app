@@ -8,6 +8,11 @@ const pStyle = {
   fontSize: '55px',
   textAlign: 'center'
 };
+const spinner = {
+  width: '35rem',
+  height: '35rem',
+  backgroundColor:'orange'
+}
 class RenderListsWrapper extends Component {
   state = {
     foundItems: {},
@@ -36,7 +41,9 @@ componentDidMount(){
     const { loading } = this.state;
     if(loading){
       return(
-      <div style={pStyle}> CZEKAMY CZEKAMY</div>
+        <div className="spinner-grow text-warning" style={spinner} role="status">
+        <span className="sr-only">Loading...</span>
+      </div>
       )}else{
     return (
       <div>

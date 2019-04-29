@@ -79,20 +79,16 @@
 .list-item-hash-wrapper {
    
     height: 40px;
-    margin-left:-1rem;
-    margin-top:1.5rem;
+    margin-top:2rem;
 }
 
 .list-item-hash {
     color: #2B3942;
-    letter-spacing: .05rem;
-    background: rgba(211, 211, 211, 0.1);
-    font-style: italic;
-    font-weight: 900;
+    font-size:.8rem;
+    font-weight: 100;
     margin-top:-1rem;
-    max-width: 250px;
+  
     text-transform: uppercase;
-    font-family: monospace;
    
   
 
