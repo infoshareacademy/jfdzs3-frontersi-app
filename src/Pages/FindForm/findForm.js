@@ -4,7 +4,9 @@ import formularz from '../../img/LastForm/2.png';
 import zguba from '../../img/FindForm/4.PNG';
 import {storage, db } from '../../firebase';
 
-
+const red = {
+  color: 'red',
+}
 const form= {
   margin: '0 auto'
 }
@@ -229,7 +231,7 @@ class findForm extends Component {
           <input required type="file" onChange={this.handleFileInputChange}/><br /><br />
 
           <progress value={this.state.progress} max="100" style={uploader}></progress><br />
-    
+          {(this.state.progress < 100)&&(this.state.progress  >0)&&<p style={red}>{`Proszę czekać... ${this.state.progress}%.`}</p>}
           <input type="submit" value="Dodaj zgłoszenie" style={label} />
         </div>
           
