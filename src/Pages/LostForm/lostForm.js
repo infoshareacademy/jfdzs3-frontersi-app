@@ -4,7 +4,9 @@ import formularz from '../../img/LastForm/2.png';
 import zguba from '../../img/LastForm/4.PNG';
 import {storage, db } from '../../firebase';
 
-
+const red = {
+  color: 'red',
+}
 const form= {
   margin: '0 auto',
   
@@ -98,7 +100,6 @@ class lostForm extends Component {
       const image = e.target.files[0] ;
       this.setState(() => ({image}));
       e.preventDefault();
-  const img =this.state.image;
   const uploadTask = storage.ref(`lostImages/${image.name}`).put(image);
   uploadTask.on('state_changed', (snapshot)=>{
      //progress
@@ -224,7 +225,7 @@ class lostForm extends Component {
           <input required type="file" onChange={this.handleFileInputChange}/><br /><br />
 
           <progress value={this.state.progress} max="100" style={uploader}></progress><br />
-          
+          {(this.state.progress < 100)&&(this.state.progress  >0)&&<p style={red}>{`Proszę czekać... ${this.state.progress}%.`}</p>}
           <input type="submit" value="Dodaj zgłoszenie" style={label} />
         </div>
           

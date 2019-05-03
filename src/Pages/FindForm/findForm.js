@@ -88,7 +88,6 @@ class findForm extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleFileInputChange = this.handleFileInputChange.bind(this);
-    // this.handleUpload = this.handleUpload.bind(this);
 
   }
   handleChange = (event) => {
@@ -100,7 +99,7 @@ class findForm extends Component {
       this.setState(() => ({image}));
 
       e.preventDefault();
-  const img =this.state.image;
+
   const uploadTask = storage.ref(`findImages/${image.name}`).put(image);
   uploadTask.on('state_changed', (snapshot)=>{
      //progress
