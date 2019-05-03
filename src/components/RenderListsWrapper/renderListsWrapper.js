@@ -49,7 +49,6 @@ componentDidMount(){
       <div>
       <SearchBar/>
       <div className="RenderLists">
-
       <FindList list={this.state.foundItems}/>
       <LostList list={this.state.lostItems}/>
       </div>
