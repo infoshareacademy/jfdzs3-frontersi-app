@@ -4,6 +4,11 @@ import FindList from '../FindList/findList';
 import LostList from '../LostList/lostList';
 import { db } from '../../firebase';
 
+const renderLists = {
+
+  marginTop: 0,
+  padding:0
+}
 const pStyle = {
   fontSize: '55px',
   textAlign: 'center'
@@ -48,7 +53,7 @@ componentDidMount(){
     return (
       <div>
       <SearchBar/>
-      <div className="RenderLists">
+      <div style={renderLists}>
       <FindList list={this.state.foundItems}/>
       <LostList list={this.state.lostItems}/>
       </div>

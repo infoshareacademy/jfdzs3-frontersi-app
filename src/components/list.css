@@ -1,21 +1,26 @@
-.list {
-    display: inline-block;
-    width: 50%;
-    margin-top:1rem;
-    min-height: 30rem;
+.listWrapper{
+    width:50%;
     min-height: 950px;
-    vertical-align: middle;
-    margin-bottom: 4rem;
+    margin:0;
+    padding:0;
+    display: inline-block;
+    vertical-align:top;
+    }
+
+
+.list {
+   width:100%;
+    height:100%;
+    margin-bottom: 20px;
+
 }
 
+
 .lead-find {
-    width: auto;
- 
+     width: auto;
     height: 40px;
-    display: block;
-    margin: 0 auto;
-    margin-bottom:4rem;
-    padding: 0;
+    margin-bottom:40px;
+    padding:none; 
 }
 
 .list-item-wrapper {
@@ -26,7 +31,7 @@
     margin: 0 auto;
     border-radius: .1rem;
     margin-top: 1rem;
-    min-height: 10rem;
+    min-height: 100px;
 }
 
 .list-item-img {
@@ -34,7 +39,7 @@
     width: 80px;
     height: 80px;
     margin-left: 1rem;
-    margin-top: 1rem;
+    margin-top: 10px;
     webkit-box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.75);
     box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.75);
@@ -45,7 +50,7 @@
     justify-self: end;
     margin-left: auto;
     padding-right: 1rem;
-    margin-top: 1rem;
+    margin-top: 10px;
 }
 
 

@@ -9,8 +9,10 @@ class FindList extends Component {
         const item = Object.keys(this.props.list);
 
         return (
+            <div className="listWrapper">
+            <img className="lead-find" src={znalezione}></img>
             <div className="list">
-                <img className="lead-find" src={znalezione}></img>
+
                 {item.map(key => {
                     const i = this.props.list[key];
 
@@ -29,6 +31,8 @@ class FindList extends Component {
 
                 })}
             </div>
+            </div>
+            
         )
     };
 }

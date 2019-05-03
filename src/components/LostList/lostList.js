@@ -8,8 +8,9 @@ class LostList extends Component {
     render() {
         const item = Object.keys(this.props.list);
         return (
+            <div className="listWrapper">
+            <img className="lead-find" src={zgubione}></img>
             <div className="list">
-                <img className="lead-find" src={zgubione}></img>
                 {item.map(key => {
                     const i = this.props.list[key];
                     console.log(i.category)
@@ -26,6 +27,7 @@ class LostList extends Component {
         
     )
 })}
+</div>
 </div>
  
 
