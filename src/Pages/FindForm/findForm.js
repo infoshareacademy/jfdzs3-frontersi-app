@@ -88,7 +88,7 @@ class findForm extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleFileInputChange = this.handleFileInputChange.bind(this);
-    this.handleUpload = this.handleUpload.bind(this);
+    // this.handleUpload = this.handleUpload.bind(this);
 
   }
   handleChange = (event) => {
@@ -98,11 +98,9 @@ class findForm extends Component {
     if(e.target.files[0]) {
       const image = e.target.files[0] ;
       this.setState(() => ({image}));
-  }
-}
-handleUpload = (e) => {
-  e.preventDefault();
-  const {image} =this.state;
+
+      e.preventDefault();
+  const img =this.state.image;
   const uploadTask = storage.ref(`findImages/${image.name}`).put(image);
   uploadTask.on('state_changed', (snapshot)=>{
      //progress
@@ -119,8 +117,11 @@ handleUpload = (e) => {
       this.setState({url});
      })
    });
-}
 
+
+
+  }
+}
   handleSubmit(event) {
     alert('Ogłoszenie zostało dodane!');
     event.preventDefault();
@@ -229,7 +230,7 @@ handleUpload = (e) => {
           <input required type="file" onChange={this.handleFileInputChange}/><br /><br />
 
           <progress value={this.state.progress} max="100" style={uploader}></progress><br />
-          <button onClick={(this.state.image === null)||this.handleUpload}>Dodaj zdjęcie</button><br />
+    
           <input type="submit" value="Dodaj zgłoszenie" style={label} />
         </div>
           

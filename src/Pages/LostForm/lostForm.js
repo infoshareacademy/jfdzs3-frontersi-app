@@ -89,7 +89,6 @@ class lostForm extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleFileInputChange = this.handleFileInputChange.bind(this);
-    this.handleUpload = this.handleUpload.bind(this);
   }
   handleChange = (event) => {
     this.setState({ [event.target.name]: event.target.value })
@@ -117,10 +116,6 @@ class lostForm extends Component {
    });
   }
 }
-handleUpload = (e) => {
-  
-}
-
   handleSubmit(event) {
     alert('Ogłoszenie zostało dodane!');
     event.preventDefault();
