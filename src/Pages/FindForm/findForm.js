@@ -166,7 +166,7 @@ handleUpload = (e) => {
           <label style={label}>
             Gdzie znalazłeś:</label>
             <select required name="location" value={this.state.location} onChange={this.handleChange} style={inputStyle}>
-              <option selected>Dzielnica</option>
+              <option value="">Dzielnica</option>
               <option>Arkońskie-Niemierzyn</option>
               <option>Głębokie-Pilchowo</option>
               <option>Gumieńce</option>
@@ -209,7 +209,7 @@ handleUpload = (e) => {
           <label style={label}>
             Rodzaj przedmiotu:</label>
             <select required name="category" value={this.state.category} onChange={this.handleChange} style={inputStyle}>
-              <option selected>Kategoria</option>
+              <option value="">Kategoria</option>
               <option>Telefon</option>
               <option>Bizuteria</option>
               <option>Portfel</option>
