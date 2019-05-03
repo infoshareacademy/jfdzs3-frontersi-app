@@ -98,11 +98,8 @@ class lostForm extends Component {
     if(e.target.files[0]) {
       const image = e.target.files[0] ;
       this.setState(() => ({image}));
-  }
-}
-handleUpload = (e) => {
-  e.preventDefault();
-  const {image} =this.state;
+      e.preventDefault();
+  const img =this.state.image;
   const uploadTask = storage.ref(`lostImages/${image.name}`).put(image);
   uploadTask.on('state_changed', (snapshot)=>{
      //progress
@@ -115,10 +112,13 @@ handleUpload = (e) => {
    (complete) => {
      //complete
      storage.ref('lostImages').child(image.name).getDownloadURL().then(url => {
-      console.log(url);
       this.setState({url});
      })
    });
+  }
+}
+handleUpload = (e) => {
+  
 }
 
   handleSubmit(event) {
@@ -229,7 +229,7 @@ handleUpload = (e) => {
           <input required type="file" onChange={this.handleFileInputChange}/><br /><br />
 
           <progress value={this.state.progress} max="100" style={uploader}></progress><br />
-          <button onClick={(this.state.image === null)||this.handleUpload}>Dodaj zdjęcie</button><br />
+          
           <input type="submit" value="Dodaj zgłoszenie" style={label} />
         </div>
           
