@@ -130,7 +130,7 @@ class lostForm extends Component {
             <Form.Field control={Input} label='Numer kontaktowy' placeholder='000-000-000' required type="tel" name="phoneNumber" pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}" value={this.state.phoneNumber} onChange={this.handleChange} />
           </Form.Group>
           <Form.Group widths='equal'>
-            <Form.Field label='Gdzie zgubiłeś' control='select' required>
+            <Form.Field label='Gdzie zgubiłeś' control='select' required name="location" value={this.state.location} onChange={this.handleChange}>
               <option value="">Dzielnica</option>
               <option>Arkońskie-Niemierzyn</option>
               <option>Głębokie-Pilchowo</option>
@@ -170,7 +170,7 @@ class lostForm extends Component {
               <option>Warszewo</option>
               <option>Żelechowa</option>
             </Form.Field>
-            <Form.Field label='Co zgubiłeś' control='select' required>
+            <Form.Field label='Co zgubiłeś' control='select' required name="category" value={this.state.category} onChange={this.handleChange}>
               <option value="">Kategoria</option>
               <option>Telefon</option>
               <option>Bizuteria</option>
