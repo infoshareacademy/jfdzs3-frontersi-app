@@ -3,13 +3,14 @@ import './searchBar.css';
 
 class SearchBar extends Component {
     state = { 
-        term: '',
-        category: '',
-        area: ''
+        nameFilter: '',
+        categoryFilter: '',
+        areaFilter: ''
     };
     onFormSubmit = (e) => {
         e.preventDefault();
-    this.props.onSub(this.state.term, this.state.category, this.state.area);  
+        console.log(this.state.nameFilter, this.state.categoryFilter, this.state.areaFilter);
+    // this.props.onSub(this.state.nameFilter, this.state.categoryFilter, this.state.areaFilter);  
 
 }
     render() {
@@ -21,13 +22,13 @@ class SearchBar extends Component {
                     <form onSubmit={this.onFormSubmit} className="form-inline">
                         <div className="input-wrapper">
                             <input value={this.state.term}
-                            onChange={e => this.setState({ term: e.target.value})}
+                            onChange={e => this.setState({ nameFilter: e.target.value})}
                                 className="searchBarInput form-control"
                                 type="search"
                                 placeholder="Czego szukasz"
                                 aria-label="Search"/>
                             <div className="select-wrapper">
-                                <select value={this.state.category} onChange={e => this.setState({category: e.target.value})}>
+                                <select value={this.state.category} onChange={e => this.setState({categoryFilter: e.target.value})}>
                                     <option>Kategoria</option>
                                     <option>Telefon</option>
                                     <option>Bizuteria</option>
@@ -37,7 +38,7 @@ class SearchBar extends Component {
                                     <option>Zwierzę</option>
                                     <option>Inne</option>
                                 </select>
-                                <select value={this.state.area} onChange={e => this.setState({area: e.target.value})}>
+                                <select value={this.state.area} onChange={e => this.setState({areaFilter: e.target.value})}>
                                     <option>Dzielnica</option>
                                     <option>Arkońskie-Niemierzyn</option>
                                     <option>Głębokie-Pilchowo</option>

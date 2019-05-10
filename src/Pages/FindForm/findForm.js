@@ -189,7 +189,8 @@ class findForm extends Component {
 
             <progress value={this.state.progress} max="100" style={uploader}></progress><br />
             {(this.state.progress < 100) && (this.state.progress > 0) && <p style={red}>{`Proszę czekać... ${this.state.progress}%`}</p>}
-            <input type="submit" value="Dodaj zgłoszenie" style={label} />
+            <input type="submit" className="Add" value="Dodaj zgłoszenie" style={label} disabled />
+            { (this.state.url !== '')&& document.querySelector('.Add').removeAttribute("disabled") }
           </div>
         </Form>
       </div>

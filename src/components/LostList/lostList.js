@@ -8,6 +8,18 @@ class LostList extends Component {
     render() {
         const item = Object.keys(this.props.list);
         return (
+
+            // item..filter(key => {
+            //     const i = item[key];
+            //     return (
+            //       i.name.includes(item.nameFilter) &&
+            //       i.phone.includes(this.state.phoneFilter)
+            //     );
+            //   })
+            //   .map(key => {
+            //     const item = this.state.items[key];
+            //     return <Item key={key} id={key} item={item} />;
+            //   })}
             <div className="listWrapper">
             <img className="lead-find" src={zgubione}></img>
             <div className="list">
