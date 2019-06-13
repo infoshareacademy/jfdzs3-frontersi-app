@@ -1,157 +1,272 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import './lostForm.css';
 import formularz from '../../img/LastForm/2.png';
 import zguba from '../../img/LastForm/4.PNG';
+import {storage, db} from '../../firebase';
+import 'semantic-ui-css/semantic.min.css'
+import {Form, Input, TextArea} from 'semantic-ui-react';
 
-const nameStyle = {
-  marginRight: '20px',
-  marginLeft: '200px',
+const red = {
+    color: 'red'
 }
-const emailStyle = {
-  marginRight: '20px',
-  marginLeft: '100px'
+const form = {
+    margin: '0 auto',
+    width: '1088px'
 }
-const locationStyle = {
-  marginLeft: '350px',
-  marginTop: '50px'
+
+const label = {
+    width: '30rem',
+
+    fontFamily: "Lato,'Helvetica Neue',Arial,Helvetica,sans-serif",
+    verticalAlign: 'middle'
 }
-const categoryStyle = {
-  marginLeft: '350px'
-}
-const descriptionStyle = {
-  marginLeft: '30%',
-  marginTop: '50px'
-}
+
 const lostStyle = {
-  width: '1200px',
-  marginLeft: '200px'
+    margin: '0 auto'
 }
 const formStyle = {
-  width: '1200px',
-  marginLeft: '200px',
-  marginBottom: '100px'
-}
-const inputStyle = {
-  borderRadius: '10px',
-  boxShadow: '0 0 0 3px #000',
-  border: '5px solid transparent'
+    margin: '40px auto',
+    width: '20%'
 }
 
+const uploader = {
+    webkitAppearance: 'none',
+    apperance: 'none',
+    width: '30%',
+    marginBottom: '10px',
+    color: 'white'
+}
 
+const pictureWrapper = {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center'
+}
+const previewStyle = {
+    maxHeight: "400px",
+    maxWidth: "300px"
+}
 
-class FindForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      yourName: '',
-      email: '',
-      phoneNumber: '',
-      location: '',
-      category: '',
-      description: ''
-    };
+class lostForm extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            images: [],
+            progress: 0,
+            image: null,
+            url: '',
+            itemName: '',
+            email: '',
+            phoneNumber: '',
+            location: '',
+            category: '',
+            description: ''
+        };
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+        this.handleChange = this
+            .handleChange
+            .bind(this);
+        this.handleSubmit = this
+            .handleSubmit
+            .bind(this);
+        this.handleFileInputChange = this
+            .handleFileInputChange
+            .bind(this);
+    }
+    handleChange = (event) => {
+        this.setState({
+            [event.target.name]: event.target.value
+        })
+    }
+    handleFileInputChange = (e) => {
+        if (e.target.files[0]) {
+            const image = e.target.files[0];
+            this.setState(() => ({image}));
+            e.preventDefault();
+            const uploadTask = storage
+                .ref(`lostImages/${image.name}`)
+                .put(image);
+            uploadTask.on('state_changed', (snapshot) => {
+                //progress
+                const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+                this.setState({progress});
+            }, (error) => {
+                //error
+                console.log(error)
+            }, (complete) => {
+                //complete
+                storage
+                    .ref('lostImages')
+                    .child(image.name)
+                    .getDownloadURL()
+                    .then(url => {
+                        this.setState({url});
+                    })
+            });
+        }
+    }
+    handleSubmit(event) {
+        alert('Ogłoszenie zostało dodane!');
+        event.preventDefault();
+        console.log(this.state)
+        const lostItemDetails = {
+            itemName: this.state.itemName,
+            email: this.state.email,
+            phoneNumber: this.state.phoneNumber,
+            location: this.state.location,
+            category: this.state.category,
+            description: this.state.description,
+            url: this.state.url
+        }
+        db
+            .ref('/lostItem')
+            .push(lostItemDetails, function (error) {
+                console.log(error)
+                console.log('new item added');
+            });
+    }
+    render() {
 
-  handleChange = (event) => {
-    this.setState({ [event.target.name]: event.target.value })
-  }
+        return (
 
-  handleSubmit(event) {
-    alert('Ogłoszenie zostało dodane!');
-    event.preventDefault();
-    console.log(this.state)
-  }
+            <div className="form" style={form}>
+                <img className="zguba" src={zguba} style={lostStyle}/>
+                <img className="formularz" src={formularz} style={formStyle}/>
+                <Form style={form} onSubmit={this.handleSubmit}>
+                    <Form.Group widths='equal'>
+                        <Form.Field
+                            control={Input}
+                            label='Co zgubiłeś'
+                            placeholder='Co zgubiłeś'
+                            required
+                            type="text"
+                            name="itemName"
+                            value={this.state.itemName}
+                            onChange={this.handleChange}
+                            className="name"/>
+                        <Form.Field
+                            control={Input}
+                            label='Twój email'
+                            placeholder='podajemail@mail.com'
+                            required
+                            type="email"
+                            name="email"
+                            value={this.state.email}
+                            onChange={this.handleChange}/>
+                        <Form.Field
+                            control={Input}
+                            label='Numer kontaktowy'
+                            placeholder='000-000-000'
+                            required
+                            type="tel"
+                            name="phoneNumber"
+                            pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}"
+                            value={this.state.phoneNumber}
+                            onChange={this.handleChange}/>
+                    </Form.Group>
+                    <Form.Group widths='equal'>
+                        <Form.Field
+                            label='Gdzie zgubiłeś'
+                            control='select'
+                            required
+                            name="location"
+                            value={this.state.location}
+                            onChange={this.handleChange}>
+                            <option value="">Dzielnica</option>
+                            <option>Arkońskie-Niemierzyn</option>
+                            <option>Głębokie-Pilchowo</option>
+                            <option>Gumieńce</option>
+                            <option>Krzekowo-Bezrzecze</option>
+                            <option>Osów</option>
+                            <option>Pogodno</option>
+                            <option>Pomorzany</option>
+                            <option>Świerczewo</option>
+                            <option>Zawadzkiego-Klonowica</option>
+                            <option>Centrum</option>
+                            <option>Drzetowo-Grabowo</option>
+                            <option>Łękno</option>
+                            <option>Międzyodrze-Wyspa Pucka</option>
+                            <option>Niebuszewo-Bolinko</option>
+                            <option>Nowe Miasto</option>
+                            <option>Stare Miasto</option>
+                            <option>Śródmieście-Północ</option>
+                            <option>Śródmieście-Zachód</option>
+                            <option>Turzyn</option>
+                            <option>Bukowe-Klęskowo</option>
+                            <option>Dąbie</option>
+                            <option>Kijewo</option>
+                            <option>Majowe</option>
+                            <option>Płonia-Śmierdnica-Jezierzyce</option>
+                            <option>Podjuchy</option>
+                            <option>Słoneczne</option>
+                            <option>Wielgowo-Sławociesze-Zdunowo</option>
+                            <option>Załom-Kasztanowe</option>
+                            <option>Zdroje</option>
+                            <option>Żydowce-Klucz</option>
+                            <option>Bukowo</option>
+                            <option>Golęcino-Gocław</option>
+                            <option>Niebuszewo</option>
+                            <option>Skolwin</option>
+                            <option>Stołczyn</option>
+                            <option>Warszewo</option>
+                            <option>Żelechowa</option>
+                        </Form.Field>
+                        <Form.Field
+                            label='Co zgubiłeś'
+                            control='select'
+                            required
+                            name="category"
+                            value={this.state.category}
+                            onChange={this.handleChange}>
+                            <option value="">Kategoria</option>
+                            <option>Telefon</option>
+                            <option>Bizuteria</option>
+                            <option>Portfel</option>
+                            <option>Dokumenty</option>
+                            <option>Klucze</option>
+                            <option>Zwierze</option>
+                            <option>Inne</option>
+                        </Form.Field>
+                    </Form.Group>
+                    <Form.Field
+                        control={TextArea}
+                        label='O przedmiocie'
+                        placeholder='Opisz zgubiony przedmiot'
+                        rows="5"
+                        cols="50"
+                        required
+                        type="text"
+                        name="description"
+                        value={this.state.description}
+                        onChange={this.handleChange}/>
+                    <div style={pictureWrapper}>
+                        <img
+                            src={this.state.url || 'https://via.placeholder.com/400x300'}
+                            alt="Uploaded images"
+                            style={previewStyle}/><br/>
+                        <input required type="file" onChange={this.handleFileInputChange}/><br/><br/>
 
-  render() {
-    return (
+                        <progress value={this.state.progress} max="100" style={uploader}></progress><br/> {(this.state.progress > 0) && (this.state.progress < 100) && <p style={red}>{`Proszę czekać... ${this.state.progress}%`}</p>}
+                        <input
+                            type="submit"
+                            className="Add"
+                            value="Dodaj zgłoszenie"
+                            style={label}
+                            disabled/> {(this.state.url !== '') && document
+                                .querySelector('.Add')
+                                .removeAttribute("disabled")
+                        }
 
-      <div className="form">
-        <img className="zguba" src={zguba} style={lostStyle} />
-        <img className="formularz" src={formularz} style={formStyle} />
-        <form onSubmit={this.handleSubmit}>
-          <label style={nameStyle}>
-            Imie i nazwisko:
-        <input type="text" name="yourName" value={this.state.yourName} onChange={this.handleChange} className="name" style={inputStyle} />
-          </label>
-          <label style={emailStyle}>
-            email:
-        <input type="text" name="email" value={this.state.email} onChange={this.handleChange} style={inputStyle} />
-          </label>
-          <label style={emailStyle}>
-            Numer kontaktowy:<br />
-            <input type="number" name="phoneNumber" value={this.state.phoneNumber} onChange={this.handleChange} style={inputStyle} />
-          </label><br />
-          <label style={locationStyle}>
-            Miejsce zgubienia przedmiotu:<br />
-            <select name="location" value={this.state.location} onChange={this.handleChange} style={inputStyle}>
-              <option selected>Dzielnica</option>
-              <option>Arkońskie-Niemierzyn</option>
-              <option>Głębokie-Pilchowo</option>
-              <option>Gumieńce</option>
-              <option>Krzekowo-Bezrzecze</option>
-              <option>Osów</option>
-              <option>Pogodno</option>
-              <option>Pomorzany</option>
-              <option>Świerczewo</option>
-              <option>Zawadzkiego-Klonowica</option>
-              <option>Centrum</option>
-              <option>Drzetowo-Grabowo</option>
-              <option>Łękno</option>
-              <option>Międzyodrze-Wyspa Pucka</option>
-              <option>Niebuszewo-Bolinko</option>
-              <option>Nowe Miasto</option>
-              <option>Stare Miasto</option>
-              <option>Śródmieście-Północ</option>
-              <option>Śródmieście-Zachód</option>
-              <option>Turzyn</option>
-              <option>Bukowe-Klęskowo</option>
-              <option>Dąbie</option>
-              <option>Kijewo</option>
-              <option>Majowe</option>
-              <option>Płonia-Śmierdnica-Jezierzyce</option>
-              <option>Podjuchy</option>
-              <option>Słoneczne</option>
-              <option>Wielgowo-Sławociesze-Zdunowo</option>
-              <option>Załom-Kasztanowe</option>
-              <option>Zdroje</option>
-              <option>Żydowce-Klucz</option>
-              <option>Bukowo</option>
-              <option>Golęcino-Gocław</option>
-              <option>Niebuszewo</option>
-              <option>Skolwin</option>
-              <option>Stołczyn</option>
-              <option>Warszewo</option>
-              <option>Żelechowa</option>
-            </select>
-          </label>
-          <label style={categoryStyle}>
-            Rodzaj przedmiotu:<br />
-            <select name="category" value={this.state.category} onChange={this.handleChange} style={inputStyle}>
-              <option selected>Kategoria</option>
-              <option>Telefon</option>
-              <option>Bizuteria</option>
-              <option>Portfel</option>
-              <option>Dokumenty</option>
-              <option>Klucze</option>
-              <option>Zwierzę</option>
-              <option>Inne</option>
-            </select>
-          </label><br />
-          <label style={descriptionStyle}>
-            Krótki opis przedmiotu:<br />
-            <textarea type="text" name="description" value={this.state.description} onChange={this.handleChange} rows="10" cols="60" style={inputStyle} />
-          </label>
-          <input type="submit" value="Dodaj zgłoszenie" style={nameStyle} />
-        </form>
-      </div>
+                    </div>
+                </Form>
 
-    );
+            </div>
 
-  }
+        );
+
+    }
 
 }
 
-export default FindForm;
+export default lostForm;
