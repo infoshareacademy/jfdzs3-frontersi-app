@@ -17,23 +17,19 @@ class FindDetail extends Component {
     category: '',
     description: '',
    };
+   
+   componentDidMount(){
+    fetch(`https://zgubionepl.firebaseio.com/foundItem/-LdUIiasjBzkCQuI2dNS.json/${this.props.match.params.id}`)
+    .then(response => response.json())
+    .then(itemName => {
+        this.setState({
+            itemName
+        })
+    })
+}
   render() {
             
-            (e) => {
-            const storageRef = firebase.storage().ref("img/" + file.name);
-            const task = storageRef.get(file);
-            console.log(file);
-            task.on(
-              "state_changed",
-              () => {
-                storageRef.getDownloadURL().then(url => {
-                  this.setState({
-                    images: url
-                  });
-                });
-              }
-            );
-            const file = e.target.files[0];}
+           
             
     
     return (
