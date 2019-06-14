@@ -9,9 +9,7 @@ class SearchBar extends Component {
     };
     onFormSubmit = (e) => {
         e.preventDefault();
-        console.log(this.state.nameFilter, this.state.categoryFilter, this.state.areaFilter);
-    // this.props.onSub(this.state.nameFilter, this.state.categoryFilter, this.state.areaFilter);  
-
+        e.persist();
 }
     render() {
 
@@ -38,7 +36,7 @@ class SearchBar extends Component {
                             }}>
                                     <option>Kategoria</option>
                                     <option>Telefon</option>
-                                    <option>Bizuteria</option>
+                                    <option>Biżuteria</option>
                                     <option>Portfel</option>
                                     <option>Dokumenty</option>
                                     <option>Klucze</option>
