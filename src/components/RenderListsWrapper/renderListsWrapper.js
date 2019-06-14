@@ -22,11 +22,32 @@ class RenderListsWrapper extends Component {
   state = {
     foundItems: {},
     lostItems: {},
-    loading: true
-    }
+    loading: true,
+    nameFilter: '',
+    categoryFilter: '',
+    areaFilter: ''
+  };
+    
   
+  onNameSearch = (val) => {
+    this.setState({
+      nameFilter: val
+    })
+  };
+  onCategorySearch = (val) => {
+    this.setState({
+      categoryFilter: val
+    })
+  };
+  onAreaSearch = (val) => {
+    this.setState({
+      areaFilter: val
+    });
+    
+  };
 
 componentDidMount(){ 
+
   fetch("https://zgubionepl.firebaseio.com/foundItem.json")
   .then(response => response.json())
   .then(result => {
@@ -40,9 +61,16 @@ componentDidMount(){
     //  console.log(result);
      this.setState({ lostItems: result, loading:false})
       });
+      
+}
+componentDidUpdate(){
+  console.log(this.state.areaFilter);
+  console.log(this.state.categoryFilter);
+  console.log(this.state.nameFilter);
+
 }
   render() {
-    console.log(this.state.lostItems)
+
     const { loading } = this.state;
     if(loading){
       return(
@@ -52,10 +80,10 @@ componentDidMount(){
       )}else{
     return (
       <div>
-      <SearchBar/>
+      <SearchBar onNameSearch={this.onNameSearch} onCategorySearch={this.onCategorySearch} onAreaSearch={this.onAreaSearch} />
       <div style={renderLists}>
-      <FindList list={this.state.foundItems}/>
-      <LostList list={this.state.lostItems}/>
+      <FindList nameFilter={this.state.nameFilter} categoryFilter={this.state.categoryFilter} areaFilter={this.state.areaFilter}  list={this.state.foundItems}/>
+      <LostList nameFilter={this.state.nameFilter} categoryFilter={this.state.categoryFilter} areaFilter={this.state.areaFilter} list={this.state.lostItems}/>
       </div>
       </div>
     )};
