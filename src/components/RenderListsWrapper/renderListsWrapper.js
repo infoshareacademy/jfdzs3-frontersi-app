@@ -51,9 +51,6 @@ componentDidMount(){
   fetch("https://zgubionepl.firebaseio.com/foundItem.json")
   .then(response => response.json())
   .then(result => {
-    const itemKey = Object.keys(result)[0];
-    console.log(itemKey);
-   console.log(result.key);
    this.setState({ foundItems: result,
   loading : false})
     });

@@ -5,6 +5,7 @@
 
 .lost_detail_container{ 
     text-align: justify;
+    line-height: 40px;
     margin: 0 auto;
     width: 70%;
     min-height: 500px;
