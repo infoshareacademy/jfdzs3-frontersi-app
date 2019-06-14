@@ -24,40 +24,32 @@ class FindDetail extends Component {
     fetch(`https://zgubionepl.firebaseio.com/foundItem.json`)
       .then(response => response.json())
       .then(result => {
-        const itemKey = Object.keys(result)[0];
-        const params = new URLSearchParams(window.location.search);  
-        const id = params.get("id");  
-        console.log("TEST", id);
+      const params = new URLSearchParams(window.location.search);  
+      const id = params.get("id");  
 
-        let index = 0;
-        for (let i = 0; i < Object.keys(result).length; i++) {
-          if (Object.keys(result)[i] == id) {
-            index = i;
-            break;
-          }
+      this.setState({foundItems: result[id]})
+          });
         }
-        this.setState({foundItems: result[index]})
-            });
-          }
      
   
   render() {
-    console.log("COstam"+this.state.foundItems.itemName)
+    //console.log("COstam", this.state.foundItems);
+
     return (
       <div className="App">
         <img className='title' src={znalezione}></img>
 
         <div className='lost_detail_container'>
         
-        <img className="lost-item-img" alt="" src={this.state.images}></img>
+        <img className="lost-item-img" alt="" src={this.state.foundItems.url}></img>
         
-        <div>{this.state.foundItems}</div>
-        <div>{this.state.email}</div>
-        <div>{this.state.phoneNumber}</div>
-        <div>{this.state.location}</div>
-        <div>{this.state.category}</div>
-        <div>{this.state.description}</div>
+        <div><h1>{this.state.foundItems.itemName}</h1></div>
+        <div>Kategoria: {this.state.foundItems.category}</div>
 
+        <div>Lokalizacja: {this.state.foundItems.location}</div>
+        <div>Opis: {this.state.foundItems.description}</div>
+        <div>Email: {this.state.foundItems.email}</div>
+        <div>Numer telefonu: {this.state.foundItems.phoneNumber}</div>
         </div>
         <Link className="more" to="/"><img className='title' src={comeback}></img></Link>
 
