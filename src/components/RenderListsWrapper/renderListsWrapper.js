@@ -56,7 +56,7 @@ componentDidMount(){
     console.log(result.key);
     console.log(result);
     this.setState({ foundItems: result,
-  loading : false})
+     loading : false})
     });
     fetch("https://zgubionepl.firebaseio.com/lostItem.json")
     .then(response => response.json())
