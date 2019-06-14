@@ -28,13 +28,21 @@ class FindDetail extends Component {
         const params = new URLSearchParams(window.location.search);  
         const id = params.get("id");  
         console.log("TEST", id);
-        this.setState({foundItems: result})
+
+        let index = 0;
+        for (let i = 0; i < Object.keys(result).length; i++) {
+          if (Object.keys(result)[i] == id) {
+            index = i;
+            break;
+          }
+        }
+        this.setState({foundItems: result[index]})
             });
           }
      
   
   render() {
-    
+    console.log("COstam"+this.state.foundItems.itemName)
     return (
       <div className="App">
         <img className='title' src={znalezione}></img>
@@ -43,7 +51,7 @@ class FindDetail extends Component {
         
         <img className="lost-item-img" alt="" src={this.state.images}></img>
         
-        <div>{this.state.itemName}</div>
+        <div>{this.state.foundItems}</div>
         <div>{this.state.email}</div>
         <div>{this.state.phoneNumber}</div>
         <div>{this.state.location}</div>
