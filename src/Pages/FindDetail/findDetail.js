@@ -9,28 +9,21 @@ import { storage, db } from '../../firebase';
 
 class FindDetail extends Component {
   state = { 
-    images: [],
-    itemName: '',
-    email: '',
-    phoneNumber: '',
-    location: '',
-    category: '',
-    description: '',
+    foundItems: {},
+    lostItems: {},
+
    };
    
    componentDidMount(){
-    fetch(`https://zgubionepl.firebaseio.com/foundItem/-LdUIiasjBzkCQuI2dNS.json/${this.props.match.params.id}`)
+    fetch(`https://zgubionepl.firebaseio.com/foundItem.json/${this.props.match.params.id}`)
     .then(response => response.json())
-    .then(itemName => {
+    .then(result => {
         this.setState({
-            itemName
+            foundItems: result,
         })
     })
 }
   render() {
-            
-           
-            
     
     return (
       <div className="App">
@@ -40,19 +33,15 @@ class FindDetail extends Component {
         
         <img className="lost-item-img" alt="" src={this.state.images}></img>
         
-        
-        <div>{this.state.itemName}</div>
+        <div>{this.state.foundItems.itemName}</div>
         <div>{this.state.email}</div>
         <div>{this.state.phoneNumber}</div>
         <div>{this.state.location}</div>
         <div>{this.state.category}</div>
         <div>{this.state.description}</div>
 
-        
         </div>
         <Link className="more" to="/"><img className='title' src={comeback}></img></Link>
-
-        
 
       </div>
     );
