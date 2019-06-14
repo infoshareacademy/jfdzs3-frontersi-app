@@ -247,16 +247,20 @@ class lostForm extends Component {
                             style={previewStyle}/><br/>
                         <input required type="file" onChange={this.handleFileInputChange}/><br/><br/>
 
-                        <progress value={this.state.progress} max="100" style={uploader}></progress><br/> {(this.state.progress > 0) && (this.state.progress < 100) && <p style={red}>{`Proszę czekać... ${this.state.progress}%`}</p>}
+                        <progress
+                            className="Progress"
+                            value={this.state.progress}
+                            max="100"
+                            style={uploader}></progress><br/> {(this.state.progress > 0) && (this.state.progress < 100) && <p style={red}>{`Proszę czekać... ${this.state.progress}%`}</p>}
                         <input
                             type="submit"
                             className="Add"
                             value="Dodaj zgłoszenie"
                             style={label}
-                            disabled/> {(this.state.url !== '') && document
-                                .querySelector('.Add')
-                                .removeAttribute("disabled")
-                        }
+                            disabled/> {(this.state.url !== '')&& document
+                            .querySelector('.Add')
+                            .removeAttribute("disabled")
+}
 
                     </div>
                 </Form>

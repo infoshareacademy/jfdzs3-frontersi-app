@@ -14,6 +14,7 @@ class SearchBar extends Component {
 
 }
     render() {
+
         return (
             <div className="searchBarBox">
             <div className="searchBar-orange-wrapper">
@@ -21,14 +22,20 @@ class SearchBar extends Component {
                 <nav className="searchBar navbar navbar-light mx-auto">
                     <form onSubmit={this.onFormSubmit} className="form-inline">
                         <div className="input-wrapper">
-                            <input value={this.state.term}
-                            onChange={e => this.setState({ nameFilter: e.target.value})}
+                            <input value={this.state.nameFilter}
+                            onChange={e => {
+                                this.props.onNameSearch(e.target.value);
+                                this.setState({ nameFilter: e.target.value});
+                           
+                        }}
                                 className="searchBarInput form-control"
                                 type="search"
                                 placeholder="Czego szukasz"
                                 aria-label="Search"/>
                             <div className="select-wrapper">
-                                <select value={this.state.category} onChange={e => this.setState({categoryFilter: e.target.value})}>
+                                <select value={this.state.categoryFilter} onChange={e => {this.setState({categoryFilter: e.target.value});
+                                this.props.onCategorySearch(e.target.value);
+                            }}>
                                     <option>Kategoria</option>
                                     <option>Telefon</option>
                                     <option>Bizuteria</option>
@@ -38,7 +45,8 @@ class SearchBar extends Component {
                                     <option>Zwierzę</option>
                                     <option>Inne</option>
                                 </select>
-                                <select value={this.state.area} onChange={e => this.setState({areaFilter: e.target.value})}>
+                                <select value={this.state.areaFilter} onChange={e => {this.setState({areaFilter: e.target.value});
+                                this.props.onAreaSearch(e.target.value);}}>
                                     <option>Dzielnica</option>
                                     <option>Arkońskie-Niemierzyn</option>
                                     <option>Głębokie-Pilchowo</option>
@@ -81,6 +89,7 @@ class SearchBar extends Component {
 
                                 </select>
                             </div>
+
                             <button className="searchBtn btn btn-outline-warning" type="submit">
                                 <i className="fas fa-search" aria-hidden="true"></i>
                             </button>
