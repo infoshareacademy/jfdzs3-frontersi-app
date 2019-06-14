@@ -27,7 +27,7 @@ class LostList extends Component {
                         return (
                             <div>
                                 <ListItem
-                                    link="/LostDetail"
+                                    link= {"/LostDetail/?id=" + key}
                                     itemImg={i.url}
                                     itemName={i.itemName}
                                     hasz1={i.location}

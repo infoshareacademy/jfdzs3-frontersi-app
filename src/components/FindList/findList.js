@@ -34,7 +34,7 @@ class FindList extends Component {
                         <div>
 
                             <ListItem
-                                link="/FindDetail"
+                                link= {"/FindDetail/?id=" + key}
                                 itemImg={i.url}
                                 itemName={i.itemName}
                                 hasz1={i.location}

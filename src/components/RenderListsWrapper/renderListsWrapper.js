@@ -51,8 +51,11 @@ componentDidMount(){
   fetch("https://zgubionepl.firebaseio.com/foundItem.json")
   .then(response => response.json())
   .then(result => {
-   console.log(result);
-   this.setState({ foundItems: result,
+    const itemKey = Object.keys(result)[0];
+    console.log(itemKey);
+    console.log(result.key);
+    console.log(result);
+    this.setState({ foundItems: result,
   loading : false})
     });
     fetch("https://zgubionepl.firebaseio.com/lostItem.json")

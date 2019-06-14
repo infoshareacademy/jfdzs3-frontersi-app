@@ -10,6 +10,7 @@ import { storage, db } from '../../firebase';
 class FindDetail extends Component {
   state = { 
     foundItems: {},
+    lostItems: {},
     itemName: '',
     email: '',
     phoneNumber: '',
@@ -20,19 +21,18 @@ class FindDetail extends Component {
    };
    
    componentDidMount(){
-    fetch(`https://zgubionepl.firebaseio.com/foundItem.json/${this.props.match.params.id}`)
+    fetch(`https://zgubionepl.firebaseio.com/foundItem.json`)
       .then(response => response.json())
       .then(result => {
         const itemKey = Object.keys(result)[0];
-        console.log(itemKey);
-        this.setState({ foundItem: result,
-        loading : false})
-     })
-      .then(foundItem => {
-        this.setState({foundItem})
-      })
-     ;
-  }
+        const params = new URLSearchParams(window.location.search);  
+        const id = params.get("id");  
+        console.log("TEST", id);
+        this.setState({foundItems: result})
+            });
+          }
+     
+  
   render() {
     
     return (
@@ -43,7 +43,7 @@ class FindDetail extends Component {
         
         <img className="lost-item-img" alt="" src={this.state.images}></img>
         
-        <div>{this.state.foundItem}</div>
+        <div>{this.state.itemName}</div>
         <div>{this.state.email}</div>
         <div>{this.state.phoneNumber}</div>
         <div>{this.state.location}</div>
