@@ -10,7 +10,7 @@ class FindList extends Component {
 
     render() {
         const item = Object.keys(this.props.list);
-
+       
         return (
             <div className="listWrapper">
             <img className="lead-find" src={znalezione}></img>
@@ -35,6 +35,7 @@ class FindList extends Component {
 
                             <ListItem
                                 link="/FindDetail"
+                                key={i}
                                 itemImg={i.url}
                                 itemName={i.itemName}
                                 hasz1={i.location}

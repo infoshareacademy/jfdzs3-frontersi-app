@@ -111,7 +111,7 @@ class lostForm extends Component {
         event.preventDefault();
         console.log(this.state)
         const lostItemDetails = {
-            itemName: this.state.itemName,
+            itemName: this.state.itemName.toLowerCase(),
             email: this.state.email,
             phoneNumber: this.state.phoneNumber,
             location: this.state.location,
@@ -221,11 +221,11 @@ class lostForm extends Component {
                             onChange={this.handleChange}>
                             <option value="">Kategoria</option>
                             <option>Telefon</option>
-                            <option>Bizuteria</option>
+                            <option>Bi(ż|rz)uteria</option>
                             <option>Portfel</option>
                             <option>Dokumenty</option>
                             <option>Klucze</option>
-                            <option>Zwierze</option>
+                            <option>Zwierzę</option>
                             <option>Inne</option>
                         </Form.Field>
                     </Form.Group>

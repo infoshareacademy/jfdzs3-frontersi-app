@@ -174,11 +174,11 @@ class findForm extends Component {
             <Form.Field label='Co znalazłeś' control='select' required name="category" value={this.state.category} onChange={this.handleChange}>
               <option value="">Kategoria</option>
               <option>Telefon</option>
-              <option>Bizuteria</option>
+              <option>Biżuteria</option>
               <option>Portfel</option>
               <option>Dokumenty</option>
               <option>Klucze</option>
-              <option>Zwierze</option>
+              <option>Zwierzę</option>
               <option>Inne</option>
             </Form.Field>
           </Form.Group>
