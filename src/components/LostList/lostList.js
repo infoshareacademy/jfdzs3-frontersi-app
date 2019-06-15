@@ -16,7 +16,7 @@ class LostList extends Component {
                             const i = this.props.list[key];
                           
                             return (
-                              i.itemName.includes(this.props.nameFilter) &&
+                              i.itemName.toLowerCase().includes(this.props.nameFilter.toLowerCase()) &&
                               i.category.includes(this.props.categoryFilter)&&
                               i.location.includes(this.props.areaFilter)
                             );

@@ -126,7 +126,7 @@ class findForm extends Component {
         <img className="formularz" src={formularz} style={formStyle} />
         <Form style={form} onSubmit={this.handleSubmit}>
           <Form.Group widths='equal'>
-            <Form.Field control={Input} label='Co znalazłeś' placeholder='Co znalazłeś' required type="text" name="itemName" value={this.state.itemName} onChange={this.handleChange} className="name" />
+            <Form.Field control={Input} label='Co znalazłeś' placeholder='Co znalazłeś' required type="text" name="itemName" value={this.state.itemName.toLowerCase()} onChange={this.handleChange} className="name" />
             <Form.Field control={Input} label='Twój email' placeholder='podajemail@mail.com' required type="email" name="email" value={this.state.email} onChange={this.handleChange} />
             <Form.Field control={Input} label='Numer kontaktowy' placeholder='000-000-000' required type="tel" name="phoneNumber" pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}" value={this.state.phoneNumber} onChange={this.handleChange} />
           </Form.Group>
