@@ -12,22 +12,18 @@ class LostList extends Component {
                 <img className="lead-find" src={zgubione}></img>
                 <div className="list">
                     {item
-                        .filter(key => {
-                            const i = this.props.list[key];
-                          
-                            return (
-                              i.itemName.toLowerCase().includes(this.props.nameFilter.toLowerCase()) &&
-                              i.category.includes(this.props.categoryFilter)&&
-                              i.location.includes(this.props.areaFilter)
-                            );
-                          })       
-                        .map(key => {
+                    .filter(key => {
                         const i = this.props.list[key];
-                        // console.log(i.category) console.log(this.props.list)
+
+                        return (i.itemName.toLowerCase().includes(this.props.nameFilter.toLowerCase()) && i.category.includes(this.props.categoryFilter) && i.location.includes(this.props.areaFilter));
+                    })
+                    .map(key => {
+                        const i = this.props.list[key];
                         return (
                             <div>
                                 <ListItem
-                                    link= {"/LostDetail/?id=" + key}
+                                    link=
+                                    {"/LostDetail/?id=" + key}
                                     itemImg={i.url}
                                     itemName={i.itemName}
                                     hasz1={i.location}

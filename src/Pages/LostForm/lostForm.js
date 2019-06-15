@@ -111,7 +111,10 @@ class lostForm extends Component {
         event.preventDefault();
         console.log(this.state)
         const lostItemDetails = {
-            itemName: this.state.itemName.toLowerCase(),
+            itemName: this
+                .state
+                .itemName
+                .toLowerCase(),
             email: this.state.email,
             phoneNumber: this.state.phoneNumber,
             location: this.state.location,
@@ -221,7 +224,7 @@ class lostForm extends Component {
                             onChange={this.handleChange}>
                             <option value="">Kategoria</option>
                             <option>Telefon</option>
-                            <option>Bi(ż|rz)uteria</option>
+                            <option>Biżuteria</option>
                             <option>Portfel</option>
                             <option>Dokumenty</option>
                             <option>Klucze</option>
@@ -257,9 +260,7 @@ class lostForm extends Component {
                             className="Add"
                             value="Dodaj zgłoszenie"
                             style={label}
-                            disabled/> {(this.state.url !== '')&& document
-                            .querySelector('.Add')
-                            .removeAttribute("disabled")
+                            disabled/> {(this.state.url !== '') && document.querySelector('.Add').removeAttribute("disabled")
 }
 
                     </div>

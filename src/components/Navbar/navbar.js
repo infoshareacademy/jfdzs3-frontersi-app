@@ -18,7 +18,7 @@ class Navbar extends Component {
     return (
   
         <div className="container d-flex fixed-top flex-column flex-wrap flex-lg-row align-items-center bg-white">
-        <a href="#" className="my-1 mr-md-auto"><img style={logotype} src={Logo} className="header-logo" alt="logo"/></a>
+        <a href="/" className="my-1 mr-md-auto"><img style={logotype} src={Logo} className="header-logo" alt="logo"/></a>
         <nav className="my-2 my-md-0 mr-md-3">
         <div className="nav-wrapper">
         <Link className=" p-2 text-dark main-nav-size nav-item" to="/LostForm"><img className="img-width" src={lost} ></img></Link>
