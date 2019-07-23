@@ -1,8 +1,16 @@
 import React, {Component} from 'react';
+import ReactMapGL, {Marker, NavigationControl} from 'react-map-gl';
+
+import ControlPanel from '../../components/maps/control-panel';
+import Pin from '../../components/maps/pin';
+
 import './lostForm.css';
+
 import formularz from '../../img/LastForm/2.png';
 import zguba from '../../img/LastForm/4.PNG';
+
 import {storage, db} from '../../firebase';
+
 import 'semantic-ui-css/semantic.min.css'
 import {Form, Input, TextArea} from 'semantic-ui-react';
 
@@ -61,7 +69,21 @@ class lostForm extends Component {
             phoneNumber: '',
             location: '',
             category: '',
-            description: ''
+            description: '',
+            viewport: {
+                width: 800,
+                height: 400,
+                latitude: 53.42894,
+                longitude: 14.55302,
+                zoom: 12,
+                bearing: 0,
+                pitch: 0
+            },
+            marker: {
+                latitude: 53.42894,
+                longitude: 14.55302
+            },
+            events: {}
         };
 
         this.handleChange = this
@@ -74,6 +96,37 @@ class lostForm extends Component {
             .handleFileInputChange
             .bind(this);
     }
+
+    _updateViewport = viewport => {
+        this.setState({viewport});
+    };
+
+    _logDragEvent = (name, event) => {
+        this.setState({
+            events: {
+                ...this.state.events,
+                [name]: event.lngLat
+            }
+        });
+    }
+
+    _onMarkerDragStart = event => {
+        this._logDragEvent('onDragStart', event);
+    };
+
+    _onMarkerDrag = event => {
+        this._logDragEvent('onDrag', event);
+    };
+
+    _onMarkerDragEnd = event => {
+        this._logDragEvent('onDragEnd', event);
+        this.setState({
+            marker: {
+                longitude: event.lngLat[0],
+                latitude: event.lngLat[1]
+            }
+        });
+    };
     handleChange = (event) => {
         this.setState({
             [event.target.name]: event.target.value
@@ -120,7 +173,9 @@ class lostForm extends Component {
             location: this.state.location,
             category: this.state.category,
             description: this.state.description,
-            url: this.state.url
+            url: this.state.url,
+            latitude: this.state.marker.latitude,
+            longitude: this.state.marker.longitude
         }
         db
             .ref('/lostItem')
@@ -244,6 +299,28 @@ class lostForm extends Component {
                         value={this.state.description}
                         onChange={this.handleChange}/>
                     <div style={pictureWrapper}>
+                        <div>
+                            <ReactMapGL
+                                {...this.state.viewport}
+                                mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
+                                onViewportChange={(viewport) => this.setState({viewport})}>
+
+                                <Marker
+                                    longitude={this.state.marker.longitude}
+                                    latitude={this.state.marker.latitude}
+                                    offsetTop={-20}
+                                    offsetLeft={-10}
+                                    draggable
+                                    onDragStart={this._onMarkerDragStart}
+                                    onDrag={this._onMarkerDrag}
+                                    onDragEnd={this._onMarkerDragEnd}>
+                                    <Pin size={20}/>
+                                </Marker>
+
+                            </ReactMapGL>
+
+                        </div>
+                        <br/>
                         <img
                             src={this.state.url || 'https://via.placeholder.com/400x300'}
                             alt="Uploaded images"
